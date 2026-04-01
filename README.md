@@ -5,8 +5,6 @@ This project operates at the intersection of **Data Engineering**, **Business St
 
 In e-commerce, front-end marketing metrics (like Platform ROAS) often paint an overly optimistic picture of profitability by ignoring back-end logistics. This analytics engine bridges that gap, calculating true **Net ROI** after accounting for Return-to-Origin (RTO) losses and multi-touch attribution discrepancies.
 
-*[Insert Screenshot 1: Overview Dashboard here]*
-
 ---
 
 ### 🚨 The Business Problem
@@ -42,9 +40,6 @@ This robust dataset allowed for the creation of a realistic Star Schema capable 
 * **Attribution Reconciliation:** Identified and quantified a 12.69% attribution gap between Google Analytics (GA4) and ad platform reporting, stopping the over-scaling of unprofitable campaigns.
 * **Spend Efficiency:** Highlighted high-spend, low-performing campaigns, shifting the optimization focus from "Cost Per Click" to "Cost Per Delivered Order."
 
-*[Insert Screenshot 2: RTO Overview & Scatter Plot here]*
-*[Insert Screenshot 3: Cost & ROI Waterfall Chart here]*
-*[Insert Screenshot 4: Customer Risk Action Points here]*
 
 ---
 
