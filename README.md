@@ -1,54 +1,83 @@
-# E-Commerce Profitability & RTO Risk Analytics Engine
+# 📊 E-Commerce Profitability & RTO Risk Analytics Engine
 
-### 🎯 The Objective
-This project operates at the intersection of **Data Engineering**, **Business Strategy**, and **Marketing Analytics**. 
+## 🎯 Objective
+Built an analytics system to measure **true campaign profitability (Net ROI)** by including:
+- Return-to-Origin (RTO) losses  
+- Attribution gaps between ad platforms and analytics tools  
 
-In e-commerce, front-end marketing metrics (like Platform ROAS) often paint an overly optimistic picture of profitability by ignoring back-end logistics. This analytics engine bridges that gap, calculating true **Net ROI** after accounting for Return-to-Origin (RTO) losses and multi-touch attribution discrepancies.
-
----
-
-### 🚨 The Business Problem
-1. **The Attribution Illusion:** Ad platforms inherently over-claim revenue. Relying solely on platform ROAS leads to scaling campaigns that are actually losing money.
-2. **The RTO Bleed:** A high volume of Cash-on-Delivery (COD) orders results in delivery failures (RTOs), wiping out the profit margins of seemingly successful marketing campaigns. 
-3. **Operational Silos:** Marketing teams rarely have a streamlined way to retroactively identify which specific customers or campaigns are driving the highest logistical losses.
+This helps answer:
+> Are we actually making money from our campaigns?
 
 ---
 
-### 🏗️ Data Engineering & Synthetic Generation
-Instead of relying on clean, pre-packaged datasets, I engineered a custom synthetic dataset designed to mirror the actual complexities of a scaling e-commerce business. Drawing on four years of deep performance marketing experience, I modeled realistic data anomalies, including:
-* Multi-touch attribution gaps between web analytics and ad platforms.
-* Varying RTO probabilities based on payment methods (COD vs. Prepaid).
-* Cross-channel spend discrepancies and dynamic customer risk profiles. 
-
-This robust dataset allowed for the creation of a realistic Star Schema capable of stress-testing advanced DAX logic and complex SQL transformations.
+## 🚨 Business Problem
+- **Attribution Issue:** Ad platforms over-report revenue, leading to wrong decisions  
+- **RTO Losses:** High COD orders result in failed deliveries and revenue loss  
+- **Limited Visibility:** Hard to connect campaigns, customers, and logistics losses  
 
 ---
 
-### 🔍 Core Analytical Pillars
+## 🏗️ Dataset
+- Created a **synthetic dataset using Gemini**, based on 4 years of performance marketing experience  
+- Designed to reflect real-world challenges:
+  - Differences between platform and GA4 data  
+  - Higher RTO in COD orders  
+  - Multi-channel campaign data  
 
-#### 1. Data Architecture 
-* **Data Integration:** Unified fragmented data sources (backend order data, web analytics, and ad platform spend) using **Google BigQuery** and **SQL** (CTEs, Window Functions, Joins).
-* **Relational Modeling:** Built a highly scalable **Star Schema**, utilizing conformed dimensions (`Dim_Date`, `Dim_Campaigns`, `Dim_Products`) to ensure perfect referential integrity across disparate fact tables.
-* **Advanced DAX:** Engineered custom measures and context transitions to evaluate lifetime order histories and generate dynamic summaries.
-
-#### 2. Commercial Strategy 
-* **Revenue Degradation Tracking:** Visualized the exact pipeline from Gross Sales → Attributed Sales → Net Delivered Revenue, allowing executives to see the true cost of customer acquisition.
-* **Process Optimization:** Translated raw logistical data into actionable exclusion lists. The Risk Segmentation matrix prescribes operational directives (e.g., "Remove from TG" or "Force Prepaid Only") to mitigate financial risk.
-* **Simulated Business Impact:** Provided the data foundation required to identify high-risk segments and recover significant operating margin.
-
-#### 3. Performance Tracking 
-* **Attribution Reconciliation:** Identified and quantified attribution gaps between external analytics and ad platform reporting, stopping the over-scaling of unprofitable campaigns.
-* **Spend Efficiency:** Highlighted high-spend, low-performing campaigns, shifting the optimization focus from "Cost Per Click" to "Cost Per Delivered Order."
+- Built using a **star schema** for better analysis  
 
 ---
 
-### 🛠️ Tech Stack
-* **BI & Visualization:** Power BI, DAX, Power Query
-* **Data Storage & Manipulation:** Google BigQuery, SQL
-* **Data Sources Modeled:** E-commerce Backend (Shopify), Web Analytics (GA4), Ad Platforms (Meta, Google)
+## ⚙️ Data Architecture
+- Data stored and queried in **Google BigQuery**  
+- Data transformed using **SQL (joins, CTEs, window functions)**  
+- Connected to **Power BI** for modeling and dashboards  
 
-📷 Get Interactive Report :
+**Flow:** BigQuery → Power BI  
+
+---
+
+## 🔍 Key Analysis
+
+### 1. Profitability Analysis
+- Calculated **Net ROI after RTO losses**  
+- Found campaigns that looked profitable on ROAS but were actually loss-making  
+
+### 2. Attribution Analysis
+- Compared **platform vs GA4 revenue**  
+- Identified gaps to avoid over-scaling campaigns  
+
+### 3. RTO Analysis
+- Identified high-risk:
+  - Customers  
+  - Products  
+  - Locations  
+- Found COD as a major reason for delivery failures  
+
+### 4. Customer Segmentation
+- Grouped customers based on risk level  
+- Suggested actions:
+  - High risk → avoid targeting  
+  - Low risk → encourage prepaid  
+
+
+## 🛠️ Tech Stack
+- **SQL (BigQuery)**  
+- **Power BI (DAX)**  
+- Data sources modeled: GA4, Shopify, Meta Ads, Google Ads  
+
+---
+
+## 📈 Key Takeaway
+> Platform ROAS can be misleading.  
+> **Net ROI after RTO shows the real performance.**
+
+---
+
+## 🔗 Live Dashboard
 https://app.powerbi.com/view?r=eyJrIjoiYjJhZTZlYmItZjMwNy00NjJiLTgwZDctY2U4YWVjNzZjZjI5IiwidCI6ImI4OTZkMGRjLWFjYjItNDI2OC1iNjVlLWRkZWMyMDdiNmZkZSJ9
+
+
 
 
 
