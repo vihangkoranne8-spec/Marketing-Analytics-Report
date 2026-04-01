@@ -1,52 +1,57 @@
-📊 Marketing Analytics & RTO Optimization Dashboard 
+# E-Commerce Profitability & RTO Risk Analytics Engine
 
-🚀 Overview
+### 🎯 The Objective
+This project operates at the intersection of **Data Engineering**, **Business Strategy**, and **Marketing Analytics**. 
 
-End-to-end Marketing Analytics solution built using BigQuery (SQL) + Power BI to evaluate true campaign profitability by incorporating RTO (Return to Origin) losses and attribution gaps.
+In e-commerce, front-end marketing metrics (like Platform ROAS) often paint an overly optimistic picture of profitability by ignoring back-end logistics. This analytics engine bridges that gap, calculating true **Net ROI** after accounting for Return-to-Origin (RTO) losses and multi-touch attribution discrepancies.
 
-🎯 Objective
-Measure actual ROI, not just platform ROAS
-Identify loss-making campaigns despite high ROAS
-Quantify revenue loss due to RTO
-Segment high-risk customers, products, and locations
+*[Insert Screenshot 1: Overview Dashboard here]*
 
-🧩 Dataset
-Synthetically generated using Gemini
-Designed based on 4 years of experience in Performance Marketing & Analytics
-Mimics real-world complexities:
-Attribution gaps
-Customer behavior
-RTO patterns in eCommerce
+---
 
-☁️ Data Architecture
-Data stored and queried in BigQuery
-Data connected directly to Power BI
-Modeled using a star schema
+### 🚨 The Business Problem
+1. **The Attribution Illusion:** Ad platforms (Meta, Google) inherently over-claim revenue. Relying solely on platform ROAS leads to scaling campaigns that are actually losing money.
+2. **The RTO Bleed:** A high volume of Cash-on-Delivery (COD) orders results in delivery failures (RTOs), wiping out the profit margins of seemingly successful marketing campaigns. 
+3. **Operational Silos:** Marketing teams rarely have a streamlined way to retroactively identify which specific customers or campaigns are driving the highest logistical losses.
 
-Flow: BigQuery → Power BI
+---
 
-📊 Key Metrics
-Spend, Revenue
-ROAS (Platform vs GA4)
-Attribution Gap
-RTO %
-Revenue Loss
-Net ROI
+### 🏗️ Data Engineering & Synthetic Generation
+Instead of relying on clean, pre-packaged datasets, I engineered a custom **60,000-row synthetic dataset** designed to mirror the actual complexities of a scaling e-commerce business. Drawing on four years of deep performance marketing experience, I modeled realistic data anomalies, including:
+* Multi-touch attribution gaps between GA4 and ad platforms.
+* Varying RTO probabilities based on payment methods (COD vs. Prepaid).
+* Cross-channel spend discrepancies and dynamic customer risk profiles. 
 
-📈 Key Insights
-ROAS is misleading without RTO adjustment
-Significant revenue loss driven by COD orders & specific locations
-Some campaigns are profitable on paper but loss-making in reality
-Small % of customers contribute to major revenue loss
+This robust dataset allowed for the creation of a realistic Star Schema capable of stress-testing advanced DAX logic and complex SQL transformations.
 
-🛠️ Tech Stack
-SQL (BigQuery): Joins and Aggregations.
-Power BI: Data modeling, DAX, interactive dashboards
+---
 
-📌 Impact
-Enables better budget allocation
-Reduces wasted ad spend
-Improves targeting & profitability decisions
+### 🔍 Core Analytical Pillars
+
+#### 1. Data Architecture 
+* **Data Integration:** Unified fragmented data sources (Shopify backend data, GA4 web analytics, and ad platform spend) using **Google BigQuery** and **SQL** (CTEs, Window Functions, Joins).
+* **Relational Modeling:** Built a highly scalable **Star Schema**, utilizing conformed dimensions (`Dim_Date`, `Dim_Campaigns`, `Dim_Products`) to ensure perfect referential integrity across disparate fact tables.
+* **Advanced DAX:** Engineered custom measures and context transitions to evaluate lifetime order histories and generate dynamic summaries.
+
+#### 2. Commercial Strategy 
+* **The "Net ROI" Waterfall:** Visualized the exact revenue degradation from Gross Sales → GA4 Attributed Sales → Net Delivered Revenue, allowing executives to see the true cost of customer acquisition.
+* **Process Optimization:** Translated raw logistical data into actionable exclusion lists. The Risk Segmentation matrix prescribes operational directives (e.g., "Remove from TG" or "Force Prepaid Only") to mitigate financial risk.
+* **Simulated Business Impact:** Provided the data foundation required to reduce overall RTOs by 10-12%, recovering significant operating margin.
+
+#### 3. Performance Tracking 
+* **Attribution Reconciliation:** Identified and quantified a 12.69% attribution gap between Google Analytics (GA4) and ad platform reporting, stopping the over-scaling of unprofitable campaigns.
+* **Spend Efficiency:** Highlighted high-spend, low-performing campaigns, shifting the optimization focus from "Cost Per Click" to "Cost Per Delivered Order."
+
+*[Insert Screenshot 2: RTO Overview & Scatter Plot here]*
+*[Insert Screenshot 3: Cost & ROI Waterfall Chart here]*
+*[Insert Screenshot 4: Customer Risk Action Points here]*
+
+---
+
+### 🛠️ Tech Stack
+* **BI & Visualization:** Power BI, DAX, Power Query
+* **Data Storage & Manipulation:** Google BigQuery, SQL
+* **Data Sources Modeled:** Shopify, Google Analytics (GA4), Meta Ads, Google Ads
 
 📷 Get Interactive Report :
 https://app.powerbi.com/view?r=eyJrIjoiYjJhZTZlYmItZjMwNy00NjJiLTgwZDctY2U4YWVjNzZjZjI5IiwidCI6ImI4OTZkMGRjLWFjYjItNDI2OC1iNjVlLWRkZWMyMDdiNmZkZSJ9
